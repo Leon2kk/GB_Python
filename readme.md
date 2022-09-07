@@ -5,7 +5,7 @@ _Phyton_
 ## Задача 1
 Напишите программу, которая принимает на вход цифру, обозначающую день недели, и проверяет, является ли этот день выходным.
 
-[Ссылка на dz1_1.py](https://github.com/Leon2kk/GB_kontrolnaya_1/blob/master/dz1_1.py)
+[Ссылка на dz1_1.py](https://github.com/Leon2kk/GB_Python/blob/master/dz1_1.py)
 
 ```sh
 d = int(input("Введите день недели: "))
@@ -21,7 +21,7 @@ else:
 ## Задача 2
 Напишите программу для. проверки истинности утверждения ¬(X ⋁ Y ⋁ Z) = ¬X ⋀ ¬Y ⋀ ¬Z для всех значений предикат.
 
-[Ссылка на dz1_2.py](https://github.com/Leon2kk/GB_kontrolnaya_1/blob/master/dz1_2.py)
+[Ссылка на dz1_2.py](https://github.com/Leon2kk/GB_Python/blob/master/dz1_2.py)
 
 ```sh
 print("X | Y | Z |  ¬(X ⋁ Y ⋁ Z) = ¬X ⋀ ¬Y ⋀ ¬Z | (1) = (2) |   = ")
@@ -41,7 +41,7 @@ print("-------------------------------------------------------------")
 Напишите программу, которая принимает на вход координаты точки (X и Y), причём X ≠ 0 и Y ≠ 0 и выдаёт номер четверти плоскости, в которой находится эта точка (или на какой оси она находится).
 
 
-[Ссылка на dz1_3.py](https://github.com/Leon2kk/GB_kontrolnaya_1/blob/master/dz1_3.py)
+[Ссылка на dz1_3.py](https://github.com/Leon2kk/GB_Python/blob/master/dz1_3.py)
 
 ```sh
 x = int(input("Введите координату X: "))
@@ -68,7 +68,7 @@ print(f"точка находится {rez}")
 Напишите программу, которая по заданному номеру четверти, показывает диапазон возможных координат точек в этой четверти (x и y).
 
 
-[Ссылка на dz1_4.py](https://github.com/Leon2kk/GB_kontrolnaya_1/blob/master/dz1_4.py)
+[Ссылка на dz1_4.py](https://github.com/Leon2kk/GB_Python/blob/master/dz1_4.py)
 
 ```sh
 ch = int(input("Введите номер чертверти: "))
@@ -92,7 +92,7 @@ print(rez)
 Напишите программу, которая принимает на вход координаты двух точек и находит расстояние между ними в 2D пространстве.
 
 
-[Ссылка на dz1_5.py](https://github.com/Leon2kk/GB_kontrolnaya_1/blob/master/dz1_5.py)
+[Ссылка на dz1_5.py](https://github.com/Leon2kk/GB_Python/blob/master/dz1_5.py)
 
 ```sh
 Ax, Ay = map(int, input("Введите координаты точки A(x, y), через пробел: ").split())
@@ -105,7 +105,7 @@ print("Расстояние между точками {:.2f}".format(((Bx - Ax) 
 ## Задача 6
 Числа Фибоначчи
 
-[Ссылка на dz1_6.py](https://github.com/Leon2kk/GB_kontrolnaya_1/blob/master/dz1_6.py)
+[Ссылка на dz1_6.py](https://github.com/Leon2kk/GB_Python/blob/master/dz1_6.py)
 
 ```sh
 f1 = 1
