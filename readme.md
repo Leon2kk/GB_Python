@@ -1,5 +1,61 @@
 _Python_
 
+# Семинар 4
+
+## Задача 4.1
+Пользователь вводит число, Вам необходимо вывести число Пи с той точностью знаков после запятой, сколько указал пользователь(БЕЗ ИСПОЛЬЗОВАНИЯ МОДУЛЕЙ/БИБЛИОТЕК)
+
+[Ссылка на dz4_1.py](https://github.com/Leon2kk/GB_Python/blob/master/dz4_1.py)
+
+```sh
+n = int(input("Количество знаков в Pi = "))
+
+Pi = 0 
+for i in range(n):
+    Pi +=  1 / (16 ** i) * ( 4 / (8*i + 1) -  2/(8*i + 4) - 1/(8*i + 5) - 1/(8*i + 6))
+
+print(f"{Pi:.{n}f}")
+```
+## Задача 4.2
+Задайте натуральное число N. Напишите программу, которая составит список простых множителей числа N.
+
+[Ссылка на dz4_2.py](https://github.com/Leon2kk/GB_Python/blob/master/dz4_2.py)
+
+```sh
+n = int(input("Введите число: "))
+
+def f(n, d=2):
+    list_rez = []
+    while d * d <= n:
+        if n % d == 0:
+            list_rez.append(d)
+            n //= d
+        else:
+            d += 1
+    if n > 1:
+        list_rez.append(n)
+    return list_rez
+
+print(n,"=", "*".join(map(str, f(n))))
+```
+## Задача 4.3
+Задайте натуральное число N. Напишите программу, которая составит список простых множителей числа N.
+
+[Ссылка на dz4_3.py](https://github.com/Leon2kk/GB_Python/blob/master/dz4_3.py)
+
+```sh
+list1 = [12, 34, 34, 12, 55, 6, 4, 5, 77, 56, 34, 9, 231, 43]
+list2 = []
+
+# set(list1) 
+# or
+for i in list1:
+    if i not in list2:
+        list2.append(i)
+
+print(list1, " -> ", list2)
+```
+
 # Семинар 3
 
 ## Задача 3.1
@@ -37,7 +93,7 @@ for i in range(n_len):
     print(n[i] * n[len(n) - i - 1])
 ```
 
-## Задача 3.2
+## Задача 3.3
 Задайте список из вещественных чисел. Напишите программу, которая найдёт разницу между максимальным и минимальным значением дробной части элементов.
 
 [Ссылка на dz3_3.py](https://github.com/Leon2kk/GB_Python/blob/master/dz3_3.py)
@@ -52,6 +108,53 @@ for i in range(len(n)):
         m.append(j)
 
 print(max(m) - min(m))
+```
+## Задача 3.5
+Задайте число. Составьте список чисел Фибоначчи, в том числе для отрицательных индексов.
+
+[Ссылка на dz3_5.py](https://github.com/Leon2kk/GB_Python/blob/master/dz3_5.py)
+
+```sh
+list_fibo = list()
+a0 = 0
+a1 = 1
+n = int(input())
+
+for i in range(n + 1):
+    list_fibo.append(a0)
+    x = a0 + a1
+    a0 = a1
+    a1 = x
+
+list_fibo2 = [list_fibo[i] * (-1) ** (i + 1) for i in range(len(list_fibo))][::-1]
+
+print(list_fibo2 + list_fibo[1:])
+```
+## Задача 3.6
+Сдвиг списка.
+
+[Ссылка на dz3_6.py](https://github.com/Leon2kk/GB_Python/blob/master/dz3_6.py)
+
+```sh
+list_input = [1, 2, 3, 4, 5, 6, 7, 8]
+list_output = list()
+
+k = int(input("Сдвинуть на: "))
+
+sliter = "(" + str(k) +")"
+if k < 0 : 
+    sliter = "<-- " + sliter
+else:
+    sliter = "--> " + sliter
+
+k = k % len(list_input)
+
+for i in range(len(list_input)):
+   list_output.append(list_input[i-k])
+
+print(list_input)
+print(sliter)
+print(list_output)
 ```
 
 # Семинар 2
