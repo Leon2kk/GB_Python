@@ -47,7 +47,7 @@ print(n,"=", "*".join(map(str, f(n))))
 list1 = [12, 34, 34, 12, 55, 6, 4, 5, 77, 56, 34, 9, 231, 43]
 list2 = []
 
-# set(list1) 
+# list2 = set(list1)
 # or
 for i in list1:
     if i not in list2:
