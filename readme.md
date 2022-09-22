@@ -131,6 +131,10 @@ else:
 [Ссылка на dz5_2.py](https://github.com/Leon2kk/GB_Python/blob/master/dz5_2.py)
 
 ```sh
+import tkinter as tk
+from tkinter import messagebox as mb
+import random as rnd
+
 window = tk.Tk() 
 window.title("GB / 5-2 / Крестики-нолики")
 
