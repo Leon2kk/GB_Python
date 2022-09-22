@@ -1,5 +1,240 @@
 _Python_
 
+# Семинар 5
+
+## Задача 5.1
+Создайте программу для игры с конфетами человек против человека.
+Условие задачи: На столе лежит 2021 конфета. Играют два игрока делая ход друг после друга. Первый ход определяется жеребьёвкой. За один ход можно забрать не более чем 28 конфет. Все конфеты оппонента достаются сделавшему последний ход. Сколько конфет нужно взять первому игроку, чтобы забрать все конфеты у своего конкурента?
+
+[Ссылка на dz5_1.py](https://github.com/Leon2kk/GB_Python/blob/master/dz5_1.py)
+
+```sh
+money = 2021
+max_money_step = 28
+bank = 0
+
+player1 = "1 игрок"
+player2 = "2 игрок"
+players = [player1, player2]
+
+def toEndGame(pl):
+    print(f'Игра окончена, {pl} выйграл!')
+
+def toGame(count_money):
+    while(count_money > 0):
+        for i in players:
+            if count_money > 0:
+                print(f'Осталось {count_money} конфет')
+                
+                if (count_money < max_money_step):
+                    bank = count_money
+                else:
+                    bank = max_money_step
+
+                step = int(input(f'{i} выберите от 1 до {bank} конфет: '))
+                if step < 1 or step > bank:
+                    print(f'Вы ввели {step}, а надо от 1 до {bank}, пропускаете ход')
+                    continue
+                else:
+                    count_money -= step
+            else:
+                return i
+        if count_money <= 0:
+           toEndGame(i)
+
+toGame(money)
+```
+a) Добавьте игру против бота
+b) Подумайте как наделить бота ""интеллектом""
+
+[Ссылка на dz5_1a.py](https://github.com/Leon2kk/GB_Python/blob/master/dz5_1a.py)
+
+```sh
+from random import randint, choice
+
+print('DZ / 5 / 1(a, b) Игра в конфетки')
+
+msg = ['Ваша очередь',
+        'берите конфеты',
+        'сколько возьмёте?',
+        'берите',
+        'ваш ход']
+
+
+def introduce_players():
+    player1 = input('Как вас зовут?\n')
+    player2 = 'Т-800'
+    print(f'Очень приятно, меня зовут {player2}')
+    return [player1, player2]
+
+
+def get_rules(players):
+    n = int(input('Сколько конфет будем разыгрывать?\n '))
+    m = int(input('Сколько максимально будем брать конфет за один ход?\n '))
+    first = randint(0, 1)
+    if first == 1:
+        print(f"Жеребёка определила что вы {players[0]} ходите первым!")
+    else:
+         print(f"Жеребёка определила что я {players[1]} хожу первым!")
+    return [n, m, int(first)]
+
+
+def play_game(rules, players, msg):
+    count = rules[2]
+    if rules[0] % 10 == 1 and 9 > rules[0] > 10:
+        letter = 'а'
+    elif 1 < rules[0] % 10 < 5 and 9 > rules[0] > 10:
+        letter = 'ы'
+    else:
+        letter = ''
+    while rules[0] > 0:
+        if not count % 2:
+            move = randint(1, rules[1])
+            print(f'-> Взято {move}')
+        else:
+            print(f'{players[0]}, {choice(msg)}')
+            move = int(input())
+            if move > rules[0] or move > rules[1]:
+                print(
+                    f'Не верно указано, не более {rules[1]} конфет{letter}, всего {rules[0]} конфет{letter}')
+                attempt = 3
+                while attempt > 0:
+                    if rules[0] >= move <= rules[1]:
+                        break
+                    print(f'Попробуйте ещё раз, {attempt} попытки')
+                    move = int(input())
+                    attempt -= 1
+                else:
+                    return print(f'Не верно указано, за мухлёж игра окончена')
+        rules[0] = rules[0] - move
+        if rules[0] > 0:
+            print(f'Осталось {rules[0]} конфет{letter}')
+        else:
+            print('Все конфеты разобраны.')
+        count += 1
+    return players[count % 2]
+
+
+players = introduce_players()
+rules = get_rules(players)
+
+winer = play_game(rules, players, msg)
+if not winer:
+    print('У нас нет победителя.')
+else:
+    print(
+        f'Последний кто выбрал {winer}, - побеждает!')
+```
+## Задача 5.2
+Создайте программу для игры в ""Крестики-нолики"".
+
+[Ссылка на dz5_2.py](https://github.com/Leon2kk/GB_Python/blob/master/dz5_2.py)
+
+```sh
+window = tk.Tk() 
+window.title("GB / 5-2 / Крестики-нолики")
+
+pole = [None] * 9
+btn_num_clicked = list(range(9))
+step = 0
+
+def is_win(player):
+    if (pole[0] == pole[1] == pole[2] == player) or (pole[3] == pole[4] == pole[5] == player) or (pole[6] == pole[7] == pole[8] == player) \
+        or (pole[0] == pole[3] == pole[6] == player)  or (pole[1] == pole[4] == pole[7] == player) or (pole[2] == pole[5] == pole[8] == player) \
+        or (pole[0] == pole[4] == pole[8] == player) or (pole[2] == pole[4] == pole[6] == player):
+        for i in btn:
+            i.config(bg="lightgray", state="disabled")
+        mb.showinfo("Игра окончена", "Победитель " + player + " ))")
+
+def btn_disabled(num, t):
+    if len(btn_num_clicked) > 0:
+        pole[num] = t
+        btn[num].config(text=t, state="disabled")
+        btn_num_clicked.remove(num)
+
+def btn_click(btn_num):
+    global step   
+    window.title(btn_num)
+    btn_disabled(btn_num, "X")
+    is_win("X")
+    if btn_num == 4 and step == 0:
+        btn_num_pl2 = rnd.choice(btn_num_clicked)
+    elif btn_num != 4 and step == 0:        
+        btn_num_pl2 = 4
+    if step > 0:
+        btn_num_pl2 = 8 - btn_num
+        if btn_num_pl2 not in btn_num_clicked:
+            btn_num_pl2 = rnd.choice(btn_num_clicked)
+    btn_disabled(btn_num_pl2, "O")
+    is_win("O")
+    step += 1
+        
+btn = [tk.Button(font=28, height=3, width=6, command = lambda num=i: btn_click(num)) for i in range(9)]
+
+row = 1
+col = 0
+for i in range(len(btn)):
+    btn[i].grid(row=row, column=col)
+    col += 1
+    if col == 3:
+        row += 1
+        col = 0
+
+window.mainloop()
+```
+
+## Задача 5.3
+Реализуйте RLE алгоритм: реализуйте модуль сжатия и восстановления данных.
+
+[Ссылка на dz5_3.py](https://github.com/Leon2kk/GB_Python/blob/master/dz5_3/dz5_3.py)
+[Ссылка на input.txt](https://github.com/Leon2kk/GB_Python/blob/master/dz5_3/input.txt)
+[Ссылка на output.txt](https://github.com/Leon2kk/GB_Python/blob/master/dz5_3/output.txt)
+
+```sh
+def encode(text):
+	text_enc = ""
+	i = 0
+	while i < len(text):		
+		cnt = 1
+		while i + 1 < len(text) and text[i] == text[i + 1]:
+			cnt += 1
+			i += 1		
+		text_enc += str(cnt) + text[i]
+		i = i + 1
+	return text_enc
+
+def dencode(text:str):
+    cnt = ""
+    text_dec = ""
+    for c in text:
+        if c.isdigit():
+            cnt += c
+        else:
+            text_dec += c * int(cnt)
+            cnt = ''
+    return text_dec
+
+text_source = ''
+
+# or input
+with open('dz5_3\input.txt', 'r') as data:
+    text_source = data.read()
+data.close()
+
+text_encode = encode(text_source)
+
+#output
+with  open('dz5_3\output.txt', 'w') as data:
+    data.write(text_encode)
+data.close()
+
+text_dencode = dencode(text_encode)
+
+print(text_source)
+print(text_encode)
+print(text_dencode)
+```
+
 # Семинар 4
 
 ## Задача 4.1
