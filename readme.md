@@ -1,4 +1,88 @@
 _Python_
+# Семинар 6
+
+## Задача 6.1
+Мимикрия
+
+[Ссылка на dz6_1.py](https://github.com/Leon2kk/GB_Python/blob/master/dz6_1.py)
+
+```sh
+transfomation = lambda x: x
+
+values = [1, 2, 3, 5, "abc"]
+transformed_values = list(map(transfomation, values))
+
+if values == transformed_values:
+    print("ok")
+else:
+    print("fail")
+```
+
+## Задача 6.2
+Самая далёкая планета
+
+[Ссылка на dz6_2.py](https://github.com/Leon2kk/GB_Python/blob/master/dz6_2.py)
+
+```sh
+def find_farthest_orbit(orbits):
+    return  max(orbits, key=lambda x: 3.14159 * x[0] * x[1] if (x[0] != x[1]) else False)
+
+orbits = [(1, 3), (2.5, 10), (7, 2), (6, 6), (4, 3)]
+print(*find_farthest_orbit(orbits))
+```
+
+## Задача 6.3
+Парам пам-пам Пам парам
+
+[Ссылка на dz6_3.py](https://github.com/Leon2kk/GB_Python/blob/master/dz6_3.py)
+
+```sh
+fraza = "пара-ра-рам рам-пам-папам па-ра-па-дам".split()
+
+rez = [sum(x in 'ауоиэыяюеё' for x in i) for i in fraza]
+
+if len(set(rez)) == 1: # именно == 1
+    print("Парам пам-пам") 
+else: 
+    print("Пам парам")
+```
+
+## Задача 6.4
+Все равны, как на подбор
+
+[Ссылка на dz6_4.py](https://github.com/Leon2kk/GB_Python/blob/master/dz6_4.py)
+
+```sh
+characteristic = lambda x: x
+
+def same_by(characteristic, objects):    
+    if len(set(characteristic(i) for i in objects)) == 1 or not objects:
+        return True
+    else:
+        return False
+
+values = [0, 2, 4, 6, 8, 10]
+
+if same_by(lambda x: x % 2, values):
+    print("same")
+else:
+    print("different")
+```
+
+## Задача 6.5
+Таблица мат.операции
+
+[Ссылка на dz6_5.py](https://github.com/Leon2kk/GB_Python/blob/master/dz6_5.py)
+
+```sh
+def print_operation_table(operation, rows = 9, cols = 9):
+    for i in range(1, rows + 1):
+        for j in range(1, cols + 1):
+            print(operation(i, j), end='\t')
+        print()            
+
+print_operation_table(lambda x, y: x * y, 5)
+```
 
 # Семинар 5
 
