@@ -6,7 +6,6 @@
 import os
 os.system('cls') # чистим консоль
 
-
 def find_farthest_orbit(orbits):
     return  max(orbits, key=lambda x: 3.14159 * x[0] * x[1] if (x[0] != x[1]) else False)
 
