@@ -1,3 +1,17 @@
+   
+message = "абвгдейка нужно учить кроки по абв"
+message_result = list()
+message_list = message.split()
+for item in message_list:
+    if 'абв' not in item:
+        message_result.append(item)
+
+print(" ".join(message_result))
+
+
+
+
+
 #p1 = "2+2"
 #p2 = "1+2*3"
 #p3 = "1-2*3"
@@ -29,19 +43,20 @@
 
 #  writeln(((n xor (n-1)) shr 1)+1);
 
-from math import log2
+
+#from math import log2
 
 
-n = int(input())
-i = round(log2(n)) + 1
-flag = True
-while flag:
-    if n % 2 ** i == 0:
-        print(2 ** i)
-        flag = False
-    i -= 1
-if flag:
-    print(1)
+#n = int(input())
+#i = round(log2(n)) + 1
+#flag = True
+#while flag:
+#    if n % 2 ** i == 0:
+#        print(2 ** i)
+#        flag = False
+#    i -= 1
+#if flag:
+#    print(1)
 
  
 
