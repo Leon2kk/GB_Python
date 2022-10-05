@@ -31,7 +31,7 @@ def get_text_messages(message):
     
 bot.polling(none_stop=True, interval=0)
 ```
-### Ркзультат
+### Результат
 ![Ссылка на dz9\screen.jpg](https://github.com/Leon2kk/GB_Python/blob/master/dz9/screen.jpg)
 
 
